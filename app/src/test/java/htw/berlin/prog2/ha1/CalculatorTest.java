@@ -109,7 +109,7 @@ class CalculatorTest {
 
     @Test
     @DisplayName("AdditionWithNegativeNumberFirst")
-    void testAdditionwithNegativeNumber ()
+    void testAdditionwithNegativeNumber()
     {
         Calculator calc = new Calculator();
         calc.pressNegativeKey();
@@ -122,11 +122,24 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
+    }
 
+    @Test
+    @DisplayName("doubleNegativeMultiplication")
+    void testDoubleNegativeMultiplication()
+    {
+        Calculator calc = new Calculator();
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("x");
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
 
+        String expected = "25";
+        String actual = calc.readScreen();
 
-
-
+        assertEquals(expected, actual);
     }
 }
 
